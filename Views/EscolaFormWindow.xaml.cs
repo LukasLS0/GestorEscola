@@ -19,9 +19,16 @@ namespace ProjetoEscola.Views
     /// </summary>
     public partial class EscolaFormWindow : Window
     {
+
         public EscolaFormWindow()
         {
             InitializeComponent();
+        }
+
+        private void btSalvar_Click(object sender, RoutedEventArgs e)
+        {
+            string Estado = cbEstado.Text;
+            MessageBox.Show(Estado);
         }
     }
 }

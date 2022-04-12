@@ -55,11 +55,11 @@
                 <DatePicker Width="200" HorizontalAlignment="Left" x:Name="dataFuncao"></DatePicker>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Responsável:" Margin="0 0 80 0"/>
-                    <Label Content="CPF:" Margin=" 80 0 0 0"/>
+                    <Label Content="Telefone:" Margin=" 50 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBox Width="150" Margin="0 0 30 0" x:Name="txtbResponsavel"/>
-                    <TextBox Width=" 150" Margin="30 0 0 0" x:Name="txtbCpf"/>
+                    <TextBox Width=" 150" Margin="30 0 0 0" x:Name="txtbTelResponsavel"/>
                 </StackPanel>
             </StackPanel>
 
@@ -93,12 +93,12 @@
                 <StackPanel Orientation="Horizontal">
                     <Label Content="CEP" Margin="0 0 120 0"/>
                     <Label Content="Cidade" Margin="0 0 60 0"/>
-                    <Label Content="Estado" Margin="60 0 0 0"/>
+                    <Label Content="Estado" Margin="30 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBox Margin="0 0 35 0" Height="25" Width="100" x:Name="txtbCep"/>
                     <TextBox Margin=" 20 0 30 0 " Width="100" x:Name="txtbCidade"/>
-                    <ComboBox Width="100" Margin=" 35 0 0 0" x:Name="cbEstado">
+                    <ComboBox Width="150" Margin=" 5 0 0 0" x:Name="cbEstado">
                         <Label Content="Acre"/>
                         <Label Content="Alagoas"/>
                         <Label Content="Amapá"/>
@@ -132,7 +132,7 @@
 
         <TextBlock Text="Escola Cadastro" FontSize="25" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10"/>
         <Grid Grid.Row="4">
-            <Button Content="Salvar" Width="90" Height="20" HorizontalAlignment="Right" Margin=" 0 0 50 0" x:Name="btSalvar"/>
+            <Button Content="Salvar" Width="90" Height="20" HorizontalAlignment="Right" Margin=" 0 0 50 0" x:Name="btSalvar" Click="btSalvar_Click"/>
         </Grid>
     </Grid>
 </Window>
