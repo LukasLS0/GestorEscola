@@ -45,7 +45,7 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Margin=" 5 0 0 0">
-                <TextBlock Text="Informações de Proprietário" FontSize="20" Margin="10"/>
+                <TextBlock Text="Informações de Propriedade" FontSize="20" Margin="10"/>
                 <Label Content="Tipo:"/>
                 <StackPanel Orientation="Horizontal">
                     <RadioButton Margin="0 0 30 0" x:Name="rbPublico">Público</RadioButton>
