@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjetoEscola.Views"
         xmlns:Emit="clr-namespace:System.Reflection.Emit;assembly=mscorlib" x:Class="ProjetoEscola.Views.EscolaFormWindow"
         mc:Ignorable="d"
-        Title="EscolaFormWindow" Height="550" Width="900">
+        Title="EscolaFormWindow" Height="550" Width="900" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -20,20 +20,20 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel>
+            <StackPanel Margin=" 5 0 0 0">
                 <TextBlock Text="Informação" FontSize="20" Margin="10"/>
                 <Label Content="Nome:"/>
-                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left"/>
+                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left" x:Name="txtbNome"/>
                 <Label Content="CNPJ:"/>
-                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left"/>
+                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left" x:Name="txtbCnpj"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1">
                 <TextBlock Text="" FontSize="20" Margin="10"/>
                 <Label Content="Razão Social:"/>
-                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left"/>
+                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left" x:Name="txtbRazaoSocial"/>
                 <Label Content="Insc. Estudantil:"/>
-                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left"/>
+                <TextBox BorderThickness="3" Width="250" HorizontalAlignment="Left" x:Name="txtbInscEstudantil"/>
             </StackPanel>
 
         </Grid>
@@ -44,22 +44,22 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel>
+            <StackPanel Margin=" 5 0 0 0">
                 <TextBlock Text="Informações de Proprietário" FontSize="20" Margin="10"/>
                 <Label Content="Tipo:"/>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Margin="0 0 30 0">Público</RadioButton>
-                    <RadioButton Margin="30 0 0 0">Privado</RadioButton>
+                    <RadioButton Margin="0 0 30 0" x:Name="rbPublico">Público</RadioButton>
+                    <RadioButton Margin="30 0 0 0" x:Name="rbPrivado">Privado</RadioButton>
                 </StackPanel>
                 <Label Content="Data de Criação:"/>
-                <DatePicker Width="200" HorizontalAlignment="Left"></DatePicker>
+                <DatePicker Width="200" HorizontalAlignment="Left" x:Name="dataFuncao"></DatePicker>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Nome:" Margin="0 0 80 0"/>
+                    <Label Content="Responsável:" Margin="0 0 80 0"/>
                     <Label Content="CPF:" Margin=" 80 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Width="150" Margin="0 0 30 0"/>
-                    <TextBox Width=" 150" Margin="30 0 0 0"/>
+                    <TextBox Width="150" Margin="0 0 30 0" x:Name="txtbResponsavel"/>
+                    <TextBox Width=" 150" Margin="30 0 0 0" x:Name="txtbCpf"/>
                 </StackPanel>
             </StackPanel>
 
@@ -71,24 +71,24 @@
                     <Label Content="Email" Margin="70 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Margin="0 0 70 0" Height="25" Width="120"/>
-                    <TextBox Margin=" 10 0 0 0" Width="180" />
+                    <TextBox Margin="0 0 70 0" Height="25" Width="120" x:Name="txtbTelefone"/>
+                    <TextBox Margin=" 10 0 0 0" Width="180" x:Name="txtbEmail"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Rua" Margin="0 0 70 0"/>
                     <Label Content="Número" Margin="98 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Margin="0 0 10 0" Height="25" Width="180"/>
-                    <TextBox Margin=" 10 0 0 0" Width="120"/>
+                    <TextBox Margin="0 0 10 0" Height="25" Width="180" x:Name="txtbRua"/>
+                    <TextBox Margin=" 10 0 0 0" Width="120" x:Name="txtbNumero"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Bairro" Margin="0 0 70 0"/>
                     <Label Content="Complemento" Margin="84 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Margin="0 0 10 0" Height="25" Width="180"/>
-                    <TextBox Margin=" 10 0 0 0" Width="120"/>
+                    <TextBox Margin="0 0 10 0" Height="25" Width="180" x:Name="txtbBairro"/>
+                    <TextBox Margin=" 10 0 0 0" Width="120" x:Name="txtbComplemento"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="CEP" Margin="0 0 120 0"/>
@@ -96,9 +96,9 @@
                     <Label Content="Estado" Margin="60 0 0 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Margin="0 0 35 0" Height="25" Width="100"/>
-                    <TextBox Margin=" 20 0 30 0 " Width="100"/>
-                    <ComboBox Width="100" Margin=" 35 0 0 0" >
+                    <TextBox Margin="0 0 35 0" Height="25" Width="100" x:Name="txtbCep"/>
+                    <TextBox Margin=" 20 0 30 0 " Width="100" x:Name="txtbCidade"/>
+                    <ComboBox Width="100" Margin=" 35 0 0 0" x:Name="cbEstado">
                         <Label Content="Acre"/>
                         <Label Content="Alagoas"/>
                         <Label Content="Amapá"/>
@@ -132,7 +132,7 @@
 
         <TextBlock Text="Escola Cadastro" FontSize="25" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10"/>
         <Grid Grid.Row="4">
-            <Button Content="Salvar" Width="60" Height="20" HorizontalAlignment="Right" Margin=" 0 0 50 0"/>
+            <Button Content="Salvar" Width="90" Height="20" HorizontalAlignment="Right" Margin=" 0 0 50 0" x:Name="btSalvar"/>
         </Grid>
     </Grid>
 </Window>
