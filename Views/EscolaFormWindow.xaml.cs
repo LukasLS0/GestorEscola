@@ -28,26 +28,10 @@ namespace ProjetoEscola.Views
 
         private void btSalvar_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-            //string Estado = cbEstado.Text;
-            //MessageBox.Show(Estado);
-
             string nomeFantasia = txtbNome.Text;
             string razaoSocial = txtbRazaoSocial.Text;
             string tipo = "Privada";
             var data_criacao = dpPropriedade.SelectedDate?.ToString("yyyy-MM-dd");
-=======
->>>>>>> Stashed changes
-            string nomeFantasia = txtbNome.Text;
-            string razaoSocial = txtbRazaoSocial.Text;
-            string tipo;
-            var data_criacao = dpDataCriacao.SelectedDate?.ToString("yyyy-MM-dd");
-<<<<<<< Updated upstream
-=======
->>>>>>> main
->>>>>>> Stashed changes
             string cnpj = txtbCnpj.Text;
             string inscricao = txtbInscEstudantil.Text;
             string resp = txtbResponsavel.Text;
@@ -59,44 +43,18 @@ namespace ProjetoEscola.Views
             string cep = txtbCep.Text;
             string cidade = txtbCidade.Text;
             string estado = Convert.ToString(cbEstado.Text);
-<<<<<<< Updated upstream
             string telefone = txtbTelefone.Text;
             string rua = txtbRua.Text;
 
-=======
-<<<<<<< HEAD
-           
-=======
-            string telefone = txtbTelefone.Text;
-            string rua = txtbRua.Text;
-
->>>>>>> main
->>>>>>> Stashed changes
 
             if ((bool)rbPublico.IsChecked)
             {
                 tipo = "Pública";
             }
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-
-            var conexao = new MySqlConnection("server=localhost;database=bd_escola;port=3360;user=root;password=root");
-
-            
-=======
->>>>>>> Stashed changes
-            else {
-                tipo = "Privada";
-            }
 
             var conexao = new MySqlConnection("server=localhost;database=bd_escola;port=3360;user=root;password=root");
 
 
-<<<<<<< Updated upstream
-=======
->>>>>>> main
->>>>>>> Stashed changes
             try
             {
                 conexao.Open();
@@ -113,30 +71,14 @@ namespace ProjetoEscola.Views
                 comando.Parameters.AddWithValue("@resp", resp);
                 comando.Parameters.AddWithValue("@resp_tel", respTel);
                 comando.Parameters.AddWithValue("@email", email);
-<<<<<<< Updated upstream
                 comando.Parameters.AddWithValue("@telefone", telefone);
                 comando.Parameters.AddWithValue("@rua", rua);
-=======
-<<<<<<< HEAD
-=======
-                comando.Parameters.AddWithValue("@telefone", telefone);
-                comando.Parameters.AddWithValue("@rua", rua);
->>>>>>> main
->>>>>>> Stashed changes
                 comando.Parameters.AddWithValue("@numero", numero);
                 comando.Parameters.AddWithValue("@bairro", bairro);
                 comando.Parameters.AddWithValue("@complemento", complemento);
                 comando.Parameters.AddWithValue("@cep", cep);
                 comando.Parameters.AddWithValue("@cidade", cidade);
                 comando.Parameters.AddWithValue("@estado", estado);
-<<<<<<< Updated upstream
-                
-=======
-<<<<<<< HEAD
-=======
-                
->>>>>>> main
->>>>>>> Stashed changes
 
                 var resultado = comando.ExecuteNonQuery();
 

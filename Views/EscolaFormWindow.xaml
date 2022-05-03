@@ -52,15 +52,7 @@
                     <RadioButton Margin="30 0 0 0" x:Name="rbPrivado">Privado</RadioButton>
                 </StackPanel>
                 <Label Content="Data de Criação:"/>
-<<<<<<< Updated upstream
-                <DatePicker Width="200" HorizontalAlignment="Left" x:Name="dpDataCriacao"></DatePicker>
-=======
-<<<<<<< HEAD
                 <DatePicker Width="200" HorizontalAlignment="Left" x:Name="dpPropriedade"></DatePicker>
-=======
-                <DatePicker Width="200" HorizontalAlignment="Left" x:Name="dpDataCriacao"></DatePicker>
->>>>>>> main
->>>>>>> Stashed changes
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Responsável:" Margin="0 0 80 0"/>
                     <Label Content="Telefone:" Margin=" 50 0 0 0"/>
