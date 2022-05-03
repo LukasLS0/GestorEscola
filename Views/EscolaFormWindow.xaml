@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="EscolaFormWindow" Height="550" Width="900" ResizeMode="NoResize">
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="150"/>
@@ -136,3 +137,4 @@
         </Grid>
     </Grid>
 </Window>
+

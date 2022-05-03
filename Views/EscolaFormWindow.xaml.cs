@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using ProjetoEscola.DataBase;
 
 namespace ProjetoEscola.Views
 {
@@ -24,6 +25,7 @@ namespace ProjetoEscola.Views
         public EscolaFormWindow()
         {
             InitializeComponent();
+            
         }
 
         private void btSalvar_Click(object sender, RoutedEventArgs e)
@@ -52,15 +54,14 @@ namespace ProjetoEscola.Views
                 tipo = "Pública";
             }
 
-            var conexao = new MySqlConnection("server=localhost;database=bd_escola;port=3360;user=root;password=root");
-
 
             try
             {
-                conexao.Open();
-                var comando = conexao.CreateCommand();
+                var conexao = new Conexao();
+                var comando = conexao.Query();
 
-                comando.CommandText = "INSERT INTO Escola values (null, @nome, @razao, @cnpj, @inscricao, @tipo, @data_criacao, @resp, @resp_tel, @email, @telefone, @rua, @numero, @bairro, @complemento,@cep, @cidade, @estado);";
+                comando.CommandText = "INSERT INTO Escola values (null, @nome, @razao, @cnpj, @inscricao, @tipo, @data_criacao, @resp, @resp_tel, " +
+                    "@email, @telefone, @rua, @numero, @bairro, @complemento,@cep, @cidade, @estado);";
 
                 comando.Parameters.AddWithValue("@nome", nomeFantasia);
                 comando.Parameters.AddWithValue("@razao", razaoSocial);
@@ -86,7 +87,7 @@ namespace ProjetoEscola.Views
                 {
                     MessageBox.Show("Registro salvo com sucesso");
                 }
-                conexao.Close();
+                
             }
             catch (Exception ex)
             {

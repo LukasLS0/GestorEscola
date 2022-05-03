@@ -98,6 +98,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataBase\Conexao.cs" />
+    <Compile Include="Models\Escola.cs" />
+    <Compile Include="Models\EscolaDAO.cs" />
     <Compile Include="Views\EscolaFormWindow.xaml.cs">
       <DependentUpon>EscolaFormWindow.xaml</DependentUpon>
     </Compile>
@@ -145,5 +148,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
