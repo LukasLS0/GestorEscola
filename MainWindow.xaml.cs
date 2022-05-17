@@ -27,6 +27,7 @@ namespace ProjetoEscola
             
             EscolaFormWindow escolaFormWindow = new EscolaFormWindow();
             escolaFormWindow.ShowDialog();
+            this.Close();
            
         }
 
