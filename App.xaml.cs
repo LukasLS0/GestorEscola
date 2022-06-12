@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ProjetoEscola
+namespace ProjetinhoEscola
 {
     /// <summary>
     /// Interação lógica para App.xaml

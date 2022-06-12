@@ -6,17 +6,17 @@ using System.Data;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace ProjetoEscola.DataBase
+namespace ProjetinhoEscola.DataBase
 {
-    class Conexao
+    internal class Conexao
     {
         private static string host = "localhost";
 
-        private static string port = "3360";
+        private static string port = "3306";
 
         private static string user = "root";
 
-        private static string password = "root";
+        private static string password = "Q5so8$n%Ga";
 
         private static string dbname = "bd_escola";
 
@@ -32,13 +32,13 @@ namespace ProjetoEscola.DataBase
                 connection.Open();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
-        public MySqlCommand Query()
+        public MySqlCommand Query() 
         {
             try
             {
@@ -47,9 +47,25 @@ namespace ProjetoEscola.DataBase
 
                 return command;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
+            }
+        }
+
+        public MySqlCommand Query(string query)
+        {
+            try
+            {
+                command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = query;
+
+                return command;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

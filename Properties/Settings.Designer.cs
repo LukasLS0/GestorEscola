@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjetoEscola.Properties
+namespace ProjetinhoEscola.Properties
 {
 
 

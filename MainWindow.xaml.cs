@@ -12,10 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ProjetoEscola.Views;
-using MySql.Data.MySqlClient;
+using ProjetinhoEscola.Views;
 
-namespace ProjetoEscola
+namespace ProjetinhoEscola
 {
     /// <summary>
     /// Interação lógica para MainWindow.xam
@@ -24,16 +23,10 @@ namespace ProjetoEscola
     {
         public MainWindow()
         {
-            
-            EscolaFormWindow escolaFormWindow = new EscolaFormWindow();
-            escolaFormWindow.ShowDialog();
+            InitializeComponent();
+            CursoListWindow window = new CursoListWindow();
+            window.ShowDialog();
             this.Close();
-           
-        }
-
-        private void btSalvar_Click(object sender, RoutedEventArgs e)
-        {
-           
         }
     }
 }

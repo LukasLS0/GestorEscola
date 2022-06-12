@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{50C88FD6-21A3-4E08-BB0D-8974E8390EEC}</ProjectGuid>
+    <ProjectGuid>{2D3C8452-0176-4932-80A5-6B7402E1F83D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ProjetoEscola</RootNamespace>
-    <AssemblyName>ProjetoEscola</AssemblyName>
+    <RootNamespace>ProjetinhoEscola</RootNamespace>
+    <AssemblyName>ProjetinhoEscola</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -99,10 +99,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataBase\Conexao.cs" />
+    <Compile Include="Helpers\DAOHelpers.cs" />
+    <Compile Include="Models\Curso.cs" />
+    <Compile Include="Models\CursoDAO.cs" />
     <Compile Include="Models\Escola.cs" />
     <Compile Include="Models\EscolaDAO.cs" />
+    <Compile Include="Views\CursoFormWindow.xaml.cs">
+      <DependentUpon>CursoFormWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CursoListWindow.xaml.cs">
+      <DependentUpon>CursoListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EscolaFormWindow.xaml.cs">
       <DependentUpon>EscolaFormWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EscolaListWindow.xaml.cs">
+      <DependentUpon>EscolaListWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -116,7 +128,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CursoFormWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CursoListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EscolaFormWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EscolaListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

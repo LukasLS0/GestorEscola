@@ -11,90 +11,55 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using ProjetoEscola.DataBase;
+using ProjetinhoEscola.Models;
 
-namespace ProjetoEscola.Views
+namespace ProjetinhoEscola.Views
 {
     /// <summary>
     /// Lógica interna para EscolaFormWindow.xaml
     /// </summary>
     public partial class EscolaFormWindow : Window
     {
+        private Escola _escola = new Escola();
 
         public EscolaFormWindow()
         {
             InitializeComponent();
-            
         }
 
-        private void btSalvar_Click(object sender, RoutedEventArgs e)
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            string nomeFantasia = txtbNome.Text;
-            string razaoSocial = txtbRazaoSocial.Text;
-            string tipo = "Privada";
-            var data_criacao = dpPropriedade.SelectedDate?.ToString("yyyy-MM-dd");
-            string cnpj = txtbCnpj.Text;
-            string inscricao = txtbInscEstudantil.Text;
-            string resp = txtbResponsavel.Text;
-            string respTel = txtbTelResponsavel.Text;
-            string email = txtbEmail.Text;
-            string numero = txtbNumero.Text;
-            string bairro = txtbBairro.Text;
-            string complemento = txtbComplemento.Text;
-            string cep = txtbCep.Text;
-            string cidade = txtbCidade.Text;
-            string estado = Convert.ToString(cbEstado.Text);
-            string telefone = txtbTelefone.Text;
-            string rua = txtbRua.Text;
-
-
-            if ((bool)rbPublico.IsChecked)
-            {
-                tipo = "Pública";
-            }
-
+            _escola.NomeFantasia = txtNomeFantasia.Text;
+            _escola.RazaoSocial = txtRazaoSocial.Text;
+            _escola.Cnpj = txtCNPJ.Text;
+            _escola.InscEstadual = txtInscEstadual.Text;
+            _escola.Tipo = "Pública";
+            if ((bool)rdbParticular.IsChecked)
+                _escola.Tipo = "Particular";
+            _escola.DataCriacao = dtCriacao.SelectedDate;
+            _escola.Responsavel = txtResp.Text;
+            _escola.ResponsavelTelefone = txtRespTelefone.Text;
+            _escola.Email = txtEmail.Text;
+            _escola.Telefone = txtTelefone.Text;
+            _escola.Rua = txtRua.Text;
+            _escola.Numero = txtNumero.Text;
+            _escola.Bairro = txtBairro.Text;
+            _escola.Complemento = txtComplemento.Text;
+            //_escola.CEP = txtCEP.text;
+            _escola.Cidade=   txtCidade.Text;
+            _escola.Estado = cbbEstado.Text;
 
             try
             {
-                var conexao = new Conexao();
-                var comando = conexao.Query();
+                var dao = new EscolaDAO();
+                dao.Insert(_escola);
 
-                comando.CommandText = "INSERT INTO Escola values (null, @nome, @razao, @cnpj, @inscricao, @tipo, @data_criacao, @resp, @resp_tel, " +
-                    "@email, @telefone, @rua, @numero, @bairro, @complemento,@cep, @cidade, @estado);";
-
-                comando.Parameters.AddWithValue("@nome", nomeFantasia);
-                comando.Parameters.AddWithValue("@razao", razaoSocial);
-                comando.Parameters.AddWithValue("@cnpj", cnpj);
-                comando.Parameters.AddWithValue("@inscricao", inscricao);
-                comando.Parameters.AddWithValue("@tipo", tipo);
-                comando.Parameters.AddWithValue("@data_criacao", data_criacao);
-                comando.Parameters.AddWithValue("@resp", resp);
-                comando.Parameters.AddWithValue("@resp_tel", respTel);
-                comando.Parameters.AddWithValue("@email", email);
-                comando.Parameters.AddWithValue("@telefone", telefone);
-                comando.Parameters.AddWithValue("@rua", rua);
-                comando.Parameters.AddWithValue("@numero", numero);
-                comando.Parameters.AddWithValue("@bairro", bairro);
-                comando.Parameters.AddWithValue("@complemento", complemento);
-                comando.Parameters.AddWithValue("@cep", cep);
-                comando.Parameters.AddWithValue("@cidade", cidade);
-                comando.Parameters.AddWithValue("@estado", estado);
-
-                var resultado = comando.ExecuteNonQuery();
-
-                if (resultado > 0)
-                {
-                    MessageBox.Show("Registro salvo com sucesso");
-                }
-                
+                MessageBox.Show("Registro de escola cadastrado com sucesso!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
         }
     }
-    
 }
