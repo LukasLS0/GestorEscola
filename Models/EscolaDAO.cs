@@ -39,7 +39,7 @@ namespace ProjetinhoEscola.Models
                 comando.Parameters.AddWithValue("@complemento_esc", escola.Complemento);
                 comando.Parameters.AddWithValue("@cep_esc", escola.CEP);
                 comando.Parameters.AddWithValue("@cidade_esc", escola.Cidade);
-                comando.Parameters.AddWithValue("@estado_esc", escola.Numero);
+                comando.Parameters.AddWithValue("@estado_esc", escola.Estado);
 
                 var resultado = comando.ExecuteNonQuery();
 
@@ -72,14 +72,14 @@ namespace ProjetinhoEscola.Models
                 {
                     var escola = new Escola();
                     escola.Id = reader.GetInt32("id_esc");
-                    escola.NomeFantasia = DAOHelpers.GetString(reader, "nome_esc");
+                    escola.NomeFantasia = DAOHelpers.GetString(reader, "nome_fantasia_esc");
                     escola.RazaoSocial = DAOHelpers.GetString(reader, "razao_social_esc");
                     escola.Cnpj = DAOHelpers.GetString(reader, "cnpj_esc");
-                    escola.InscEstadual = DAOHelpers.GetString(reader, "inscricao_esc");
+                    escola.InscEstadual = DAOHelpers.GetString(reader, "insc_estadual_esc");
                     escola.Tipo = DAOHelpers.GetString(reader, "tipo_esc");
                     escola.DataCriacao = DAOHelpers.GetDateTime(reader, "data_criacao_esc");
-                    escola.Responsavel = DAOHelpers.GetString(reader, "resp_esc");
-                    escola.ResponsavelTelefone = DAOHelpers.GetString(reader, "resp_tel_esc");
+                    escola.Responsavel = DAOHelpers.GetString(reader, "responsavel_esc");
+                    escola.ResponsavelTelefone = DAOHelpers.GetString(reader, "responsavel_telefone_esc");
                     escola.Email = DAOHelpers.GetString(reader, "email_esc");
                     escola.Telefone = DAOHelpers.GetString(reader, "telefone_esc");
                     escola.Rua = DAOHelpers.GetString(reader, "rua_esc");
@@ -132,8 +132,8 @@ namespace ProjetinhoEscola.Models
                 var comando = _conn.Query();
 
                 comando.CommandText = "UPDATE escola set" +
-                    " nome_esc = @nome  , razao_social_esc = @razao_social, cnpj_esc = @cnpj, inscricao_esc = @inscricao, " +
-                    "tipo_esc = @tipo, data_criacao_esc = @data_criacao, resp_esc = @resp, resp_tel_esc = @resp_tel, " +
+                    " nome_fantasia_esc = @nome  , razao_social_esc = @razao_social, cnpj_esc = @cnpj, insc_estadual_esc = @inscricao, " +
+                    "tipo_esc = @tipo, data_criacao_esc = @data_criacao, responsavel_esc = @resp, responsavel_telefone_esc = @resp_tel, " +
                     "email_esc = @email, telefone_esc = @telefone, rua_esc = @rua, numero_esc = @rua, " +
                     "bairro_esc = @bairro, complemento_esc = @complemento, cep_esc = @cep, cidade_esc = @cidade, estado_esc = @estado " +
                     "where id_esc = @id";
@@ -155,7 +155,7 @@ namespace ProjetinhoEscola.Models
                 comando.Parameters.AddWithValue("@complemento", escola.Complemento);
                 comando.Parameters.AddWithValue("@cep", escola.CEP);
                 comando.Parameters.AddWithValue("@cidade", escola.Cidade);
-                comando.Parameters.AddWithValue("@estado", escola.Numero);
+                comando.Parameters.AddWithValue("@estado", escola.Estado);
 
                 var resultado = comando.ExecuteNonQuery();
                 

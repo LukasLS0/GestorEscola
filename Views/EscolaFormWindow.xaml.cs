@@ -60,7 +60,7 @@ namespace ProjetinhoEscola.Views
             txtComplemento.Text = _escola.Complemento;
             txtCEP.Text = _escola.CEP;
             txtCidade.Text = _escola.Cidade;
-            
+            cbbEstado.Text = _escola.Estado;
 
         }
 
@@ -85,9 +85,9 @@ namespace ProjetinhoEscola.Views
             _escola.CEP = txtCEP.Text;
             _escola.Cidade=   txtCidade.Text;
             _escola.Estado = cbbEstado.Text;
-            
-       
 
+
+            MessageBox.Show(_escola.Estado, "teste", MessageBoxButton.OK);
             try
             {
                 var dao = new EscolaDAO();
