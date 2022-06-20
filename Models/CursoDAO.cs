@@ -19,13 +19,13 @@ namespace ProjetinhoEscola.Models
             {
                 var comando = _conn.Query();
 
-                comando.CommandText = "INSERT INTO Curso VALUES (null,@nome_curso,@carga_horaria_curso,@turno_curso,@descricao_curso);";
+                comando.CommandText = "INSERT INTO Curso VALUES (null,@nome,@descricao,@carga_horaria,@turno);";
 
-                comando.Parameters.AddWithValue("@nome_curso", curso.Nome);
-                comando.Parameters.AddWithValue("@carga_horaria_curso", curso.CargaHoraria);
-                comando.Parameters.AddWithValue("turno_curso", curso.Turno);
-                comando.Parameters.AddWithValue("@descricao_curso", curso.Descricao);
-
+                comando.Parameters.AddWithValue("@nome", curso.Nome);
+                comando.Parameters.AddWithValue("@descricao", curso.Descricao);
+                comando.Parameters.AddWithValue("@carga_horaria", curso.CargaHoraria);
+                comando.Parameters.AddWithValue("@turno", curso.Turno);
+                
                 var resultado = comando.ExecuteNonQuery();
 
                 if (resultado == 0)
@@ -54,11 +54,12 @@ namespace ProjetinhoEscola.Models
                 while (reader.Read())
                 {
                     var curso = new Curso();
-                    curso.Id = reader.GetInt32("id_curso");
-                    curso.Nome = DAOHelpers.GetString(reader,"nome_curso");
-                    curso.CargaHoraria = DAOHelpers.GetString(reader,"carga_horaria_curso");
-                    curso.Turno = DAOHelpers.GetString(reader,"turno_curso");
-                    curso.Descricao = DAOHelpers.GetString(reader,"descricao_curso");
+                    curso.Id = reader.GetInt32("id_cur");
+                    curso.Nome = DAOHelpers.GetString(reader,"nome_cur");
+                    curso.Descricao = DAOHelpers.GetString(reader, "descricao_cur");
+                    curso.CargaHoraria = DAOHelpers.GetString(reader,"carga_horaria_cur");
+                    curso.Turno = DAOHelpers.GetString(reader,"turno_cur");
+                    
   
                     lista.Add(curso);
                 }
@@ -78,7 +79,7 @@ namespace ProjetinhoEscola.Models
             {
                 var comando = _conn.Query();
 
-                comando.CommandText = "DELETE FROM curso WHERE (id_curso = @id)";
+                comando.CommandText = "DELETE FROM curso WHERE (id_cur = @id)";
 
                 comando.Parameters.AddWithValue("@id", curso.Id);
 
@@ -96,6 +97,34 @@ namespace ProjetinhoEscola.Models
                 throw ex;
             }
         }
+        public void Update(Curso curso)
+        {
+            try
+            {
+                var comando = _conn.Query();
+
+                comando.CommandText = "update curso set " +
+                    "nome_cur = @nome, descricao_cur = @descricao, carga_horaria_cur = @carga_horaria, turno_cur = @turno;";
+
+                comando.Parameters.AddWithValue("@nome", curso.Nome);
+                comando.Parameters.AddWithValue("@descricao", curso.Descricao);
+                comando.Parameters.AddWithValue("@carga_horaria", curso.CargaHoraria);
+                comando.Parameters.AddWithValue("@turno", curso.Turno);
+
+                var resultado = comando.ExecuteNonQuery();
+
+                if (resultado == 0)
+                {
+                    throw new Exception("Ocorreram erros ao salvar as informações");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
+
     
 }

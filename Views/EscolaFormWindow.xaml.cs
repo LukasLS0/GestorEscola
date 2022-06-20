@@ -21,10 +21,47 @@ namespace ProjetinhoEscola.Views
     public partial class EscolaFormWindow : Window
     {
         private Escola _escola = new Escola();
-
+        
         public EscolaFormWindow()
         {
             InitializeComponent();
+            Loaded += EscolaFormWindow_Loaded;
+        }
+
+        public EscolaFormWindow(Escola escola)
+        {
+                InitializeComponent();
+
+                _escola = escola;
+                Loaded += EscolaFormWindow_Loaded;
+        }
+        private void EscolaFormWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtNomeFantasia.Text = _escola.NomeFantasia;
+            txtRazaoSocial.Text = _escola.RazaoSocial;
+            txtCNPJ.Text = _escola.Cnpj;
+            txtInscEstadual.Text = _escola.InscEstadual;
+            if (_escola.Tipo == "Pública")
+            {
+                rdbPublica.IsChecked = true;
+            }
+            else
+            {
+                rdbParticular.IsChecked = true;
+            }
+            dtCriacao.SelectedDate = _escola.DataCriacao;
+            txtResp.Text = _escola.Responsavel;
+            txtRespTelefone.Text = _escola.ResponsavelTelefone;
+            txtEmail.Text = _escola.Email;
+            txtTelefone.Text = _escola.Telefone;
+            txtRua.Text = _escola.Rua;
+            txtNumero.Text = _escola.Numero;
+            txtBairro.Text = _escola.Bairro;
+            txtComplemento.Text = _escola.Complemento;
+            txtCEP.Text = _escola.CEP;
+            txtCidade.Text = _escola.Cidade;
+            
+
         }
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
@@ -45,16 +82,26 @@ namespace ProjetinhoEscola.Views
             _escola.Numero = txtNumero.Text;
             _escola.Bairro = txtBairro.Text;
             _escola.Complemento = txtComplemento.Text;
-            //_escola.CEP = txtCEP.text;
+            _escola.CEP = txtCEP.Text;
             _escola.Cidade=   txtCidade.Text;
             _escola.Estado = cbbEstado.Text;
+            
+       
 
             try
             {
                 var dao = new EscolaDAO();
-                dao.Insert(_escola);
 
-                MessageBox.Show("Registro de escola cadastrado com sucesso!");
+                if (_escola.Id > 0 )
+                {
+                    dao.Update(_escola);
+                    MessageBox.Show("Registro de escola atualizados com sucesso!");
+                }
+                else
+                {
+                    dao.Insert(_escola);
+                    MessageBox.Show("Registro de escola cadastrado com sucesso!");
+                }   
             }
             catch (Exception ex)
             {

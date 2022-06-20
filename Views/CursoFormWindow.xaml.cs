@@ -25,6 +25,34 @@ namespace ProjetinhoEscola.Views
         public CursoFormWindow()
         {
             InitializeComponent();
+            Loaded += CursoFormWindow_Loaded;
+        }
+
+        public CursoFormWindow(Curso curso)
+        {
+            InitializeComponent();
+            _curso = curso;
+            Loaded += CursoFormWindow_Loaded;
+        }
+
+        private void CursoFormWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtNome.Text = _curso.Nome;
+            txtCargaHoraria.Text = _curso.CargaHoraria;
+            txtDescricao.Text = _curso.Descricao;
+
+            if (_curso.Turno == "Matutino")
+            {
+                rdbMatutino.IsChecked = true;
+            }
+            else
+            {
+                if (_curso.Turno == "Vespertino")
+                {
+                    rdbVespertino.IsChecked = true;
+                }
+                else rdbNoturno.IsChecked = true;
+            }  
         }
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
@@ -44,9 +72,18 @@ namespace ProjetinhoEscola.Views
             try
             {
                 var dao = new CursoDAO();
-                dao.Insert(_curso);
 
-                MessageBox.Show("Registro de curso cadastrado com sucesso!");
+                if (_curso.Id > 0)
+                {
+                    dao.Update(_curso);
+                    MessageBox.Show("Registro de curso atualizado com sucesso!");
+                }
+                else
+                {
+                    dao.Insert(_curso);
+                    MessageBox.Show("Registro de curso cadastrado com sucesso!");
+                }
+                
             }
             catch (Exception ex)
             {

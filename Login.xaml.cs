@@ -24,9 +24,30 @@ namespace ProjetinhoEscola
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnProvisorio_Click(object sender, RoutedEventArgs e)
+        {
+            EscolaFormWindow window = new EscolaFormWindow();
+            window.ShowDialog();
+        }
+
+        private void btnProvisorio3_Click(object sender, RoutedEventArgs e)
+        {
+            CursoFormWindow window = new CursoFormWindow();
+            window.ShowDialog();
+        }
+
+        private void btnProvisorio1_Click(object sender, RoutedEventArgs e)
+        {
+            EscolaListWindow window = new EscolaListWindow();
+            window.ShowDialog();
+        }
+
+        private void btnProvisorio2_Click(object sender, RoutedEventArgs e)
+        {
             CursoListWindow window = new CursoListWindow();
             window.ShowDialog();
-            this.Close();
         }
     }
 }

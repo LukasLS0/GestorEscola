@@ -46,13 +46,17 @@ namespace ProjetinhoEscola.Views
         }
         private void Button_Atualizar_Click(object sender, RoutedEventArgs e)
         {
+            var cursosSelecionado = dataGridCurso.SelectedItem as Curso;
 
+            var form = new CursoFormWindow(cursosSelecionado);
+            form.ShowDialog();
+            CarregarListagem();
         }
         private void Button_Remover_Click(object sender, RoutedEventArgs e)
         {
                 var cursoSelecionada = dataGridCurso.SelectedItem as Curso;
 
-                var resultado = MessageBox.Show("Você realmente deseja remover este curso" +cursoSelecionada.Nome + " ?",
+                var resultado = MessageBox.Show("Você realmente deseja remover este curso " +cursoSelecionada.Nome + " ?",
                     "Confirmação de Exclusao", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 try

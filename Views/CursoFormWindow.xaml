@@ -5,30 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetinhoEscola.Views"
         mc:Ignorable="d"
-        Title="CursoFormWindow" Height="450" Width="300">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="CursoFormWindow" Height="420" Width="358 " ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-
         </Grid.RowDefinitions>
 
-        <Label Content="Cadastro de Curso" FontSize="24" HorizontalAlignment="Center"/>
+        <Label Content="Cadastro de Curso" FontSize="24" HorizontalAlignment="Center" Padding="10"/>
 
         <Grid Grid.Row="1">
-            <StackPanel>
+            <StackPanel Margin="10">
                 <Label Content="Nome do Curso" HorizontalAlignment="Center"/>
-                <TextBox x:Name="txtNome"/>
-                <Label Content="Carga Horária" HorizontalAlignment="Center"/>
-                <TextBox x:Name="txtCargaHoraria"/>
-                <Label Content="Turno" HorizontalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txtNome" Width="200"/>
+                <Label Content="Carga Horária" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+                <TextBox x:Name="txtCargaHoraria" Width="200"/>
+                <Label Content="Turno" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <RadioButton Content="Matutino" x:Name="rdbMatutino" />
-                    <RadioButton Content="Vespertino" x:Name="rdbVespertino" Margin="45 0 0 0"/>
-                    <RadioButton Content="Noturno" x:Name="rdbNoturno" Margin="44 0 0 0"/>
+                    <RadioButton Content="Vespertino" x:Name="rdbVespertino" Margin="30 0"/>
+                    <RadioButton Content="Noturno" x:Name="rdbNoturno" />
                 </StackPanel>
-                <Label Content="Descrição" HorizontalAlignment="Center"/>
-                <TextBox x:Name="txtDescricao" Height="50" Width="200"  MaxLength="280" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Center"/>
+                <Label Content="Descrição" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+                <TextBox x:Name="txtDescricao" Height="50" Width="200"  MaxLength="280" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Center" BorderThickness="1"/>
                 <Button x:Name="btnSalvar" Content="Salvar" Height="30"  Width="100" Click="btnSalvar_Click" HorizontalAlignment="Center" Margin="0 20 0 0"/> 
             </StackPanel>
         </Grid>

@@ -30,29 +30,21 @@ namespace ProjetinhoEscola.Views
         {
             CarregarListagem();
         }
-        private void CarregarListagem()
-        {
-            try
-            {
-                var dao = new EscolaDAO();
-                List<Escola> listaEscolas = dao.List();
-
-                dataGridEscola.ItemsSource = listaEscolas;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        
         private void Button_Atualizar_Click(object sender, RoutedEventArgs e)
         {
+            var escolaSelecionada = dataGridEscola.SelectedItem as Escola;
 
+            var form = new EscolaFormWindow(escolaSelecionada);
+            form.ShowDialog();
+            CarregarListagem();
+            
         }
         private void Button_Remover_Click(object sender, RoutedEventArgs e)
         {
             var escolaSelecionada = dataGridEscola.SelectedItem as Escola;
 
-            var resultado = MessageBox.Show("Você realmente deseja remover a escola" + escolaSelecionada.NomeFantasia + " ?" , 
+            var resultado = MessageBox.Show("Você realmente deseja remover a escola " + escolaSelecionada.NomeFantasia + " ?" , 
                 "Confirmação de Exclusao", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             try
@@ -71,6 +63,20 @@ namespace ProjetinhoEscola.Views
                 MessageBox.Show(ex.Message);
             }
         }
-        
+        private void CarregarListagem()
+        {
+            try
+            {
+                var dao = new EscolaDAO();
+                List<Escola> listaEscolas = dao.List();
+
+                dataGridEscola.ItemsSource = listaEscolas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }
