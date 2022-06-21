@@ -87,7 +87,6 @@ namespace ProjetinhoEscola.Views
             _escola.Estado = cbbEstado.Text;
 
 
-            MessageBox.Show(_escola.Estado, "teste", MessageBoxButton.OK);
             try
             {
                 var dao = new EscolaDAO();
